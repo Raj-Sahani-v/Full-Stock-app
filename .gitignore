@@ -1,0 +1,30 @@
+# Node modules - sab subfolders ke liye
+**/node_modules/
+
+# Environment variables - sab subfolders ke liye
+**/.env
+**/.env.local
+**/.env.development
+**/.env.production
+
+# Build outputs
+**/dist/
+**/build/
+**/.next/
+
+# Logs
+**/logs/
+**/*.log
+**/npm-debug.log*
+
+# OS files
+**/.DS_Store
+**/Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Cache
+**/.cache/
+**/.eslintcache
