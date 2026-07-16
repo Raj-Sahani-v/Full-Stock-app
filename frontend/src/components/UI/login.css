@@ -1,0 +1,18 @@
+.lg-inp input{
+    margin-left: 5%;
+    padding: 2px;
+    box-sizing: border-box;
+    width: 40%;
+}
+.lg-inp{
+    padding: 1%;
+}
+#lg-container{
+    margin-top: 3%;
+    place-items: center;
+    height: 90vh;
+    width: 80vw;
+}
+#lg-btn{
+    width: 40%;
+}

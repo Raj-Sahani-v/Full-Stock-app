@@ -1,0 +1,19 @@
+.cursor {
+  animation: blink 1s infinite;
+  font-size: 60px;
+}
+.text {
+    color: green;
+
+    
+}
+.hero{
+    font-size: 55px;
+    
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
