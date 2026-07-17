@@ -2,8 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router";
 
-const backendUrl = import.meta.env.V_B_ROUTE;
-const dashboardUrl = import.meta.env.V_dSH_ROUT;
+const backendUrl = import.meta.env.VITE_B_ROUTE;
+const dashboardUrl = import.meta.env.VITE_dSH_ROUT;
 
 export const Login = () => {
   const [userName, setUserName] = useState("");

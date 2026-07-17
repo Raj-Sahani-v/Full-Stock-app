@@ -3,7 +3,7 @@ import axios from "axios";
 
 import { Link, useNavigate } from "react-router";
 
-const backendUrl = import.meta.env.V_B_ROUTE;
+const backendUrl = import.meta.env.VITE_B_ROUTE;
 
 export const Signup = () => {
   const [phone, setPhone] = useState("");
