@@ -10,7 +10,7 @@ import { routing } from "./route/userRoute.js";
 import cookieParser from 'cookie-parser'
 
 const app = express();
-app.use(cors({origin:["https://full-stock-app.vercel.app","https://stock-market-woad-one.vercel.app"],
+app.use(cors({origin:["https://full-stock-app.vercel.app","https://full-stock-app-nv8f.vercel.app/"],
   credentials:true
 }))
 app.use(cookieParser())
