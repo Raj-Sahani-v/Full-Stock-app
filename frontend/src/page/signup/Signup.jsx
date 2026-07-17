@@ -1,6 +1,9 @@
 import  { useState } from "react";
 import axios from "axios";
+
 import { Link, useNavigate } from "react-router";
+
+const backendUrl = import.meta.env.V_B_ROUTE;
 
 export const Signup = () => {
   const [phone, setPhone] = useState("");
@@ -42,7 +45,7 @@ export const Signup = () => {
     try {
       setLoading(true);
 
-      await axios.post("https://full-stock-app.onrender.com/api/v1/users/signup", data);
+      await axios.post(`${backendUrl}/api/v1/users/signup`, data);
       console.log("Signup successful:", data);
 
       setPhone("");

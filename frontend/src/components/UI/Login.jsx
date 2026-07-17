@@ -2,6 +2,9 @@ import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router";
 
+const backendUrl = import.meta.env.V_B_ROUTE;
+const dashboardUrl = import.meta.env.V_dSH_ROUT;
+
 export const Login = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -20,10 +23,10 @@ export const Login = () => {
     console.log(data);
     try {
       setloading(true);
-      const response = await axios.post("https://full-stock-app.onrender.com/api/v1/users/login", data, {
+      const response = await axios.post(`${backendUrl}/api/v1/users/login`, data, {
         withCredentials: true,
       });
-      window.location.href="https://full-stock-app.vercel.app/"
+      window.location.href=`${dashboardUrl}`
       setUserName("");
 
       setPassword("");
