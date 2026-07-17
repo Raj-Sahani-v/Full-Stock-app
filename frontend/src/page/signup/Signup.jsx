@@ -3,8 +3,8 @@ import axios from "axios";
 
 import { Link, useNavigate } from "react-router";
 
-const backendUrl = import.meta.env.VITE_B_ROUTE;
-
+const backendURL = import.meta.env.VITE_B_ROUTE;
+console.log(backendURL)
 export const Signup = () => {
   const [phone, setPhone] = useState("");
   //const [email, setEmail] = useState("")
@@ -45,7 +45,9 @@ export const Signup = () => {
     try {
       setLoading(true);
 
-      await axios.post(`${backendUrl}/api/v1/users/signup`, data);
+      
+      
+      await axios.post(`${backendURL}/api/v1/users/signup`, data);
       console.log("Signup successful:", data);
 
       setPhone("");

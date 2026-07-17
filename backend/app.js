@@ -10,7 +10,11 @@ import { routing } from "./route/userRoute.js";
 import cookieParser from 'cookie-parser'
 
 const app = express();
+<<<<<<< HEAD
 app.use(cors({origin:["https://full-stock-app.vercel.app","https://full-stock-app-nv8f.vercel.app/"],
+=======
+app.use(cors({origin:["http://localhost:5173","http://localhost:5174","https://full-stock-app.onrender.com","https://full-stock-app.vercel.app","https://full-stock-app-nv8f.vercel.app"],
+>>>>>>> dev
   credentials:true
 }))
 app.use(cookieParser())
@@ -42,6 +46,10 @@ const positions = [
   },
 ];
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> dev
 const port = process.env.PORT;
 
 app.listen( port, ()=>{
