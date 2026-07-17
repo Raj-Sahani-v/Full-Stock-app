@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+dotenv.config();
 import  cors from 'cors';
 import {positionModel} from "./model/Positionmodel.js"
 import {OrderModel} from "./model/OrdersModel.js"
@@ -16,7 +17,7 @@ app.use(cors({origin:["http://localhost:5173","http://localhost:5174","https://f
 }))
 app.use(cookieParser())
 app.use(express.json())
-dotenv.config();
+
 
 
 app.use("/api/v1/users", routing);
@@ -43,10 +44,6 @@ const positions = [
   },
 ];
 
-<<<<<<< HEAD
-=======
-
->>>>>>> dev
 const port = process.env.PORT;
 
 app.listen( port, ()=>{
