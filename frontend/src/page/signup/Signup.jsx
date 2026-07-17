@@ -41,7 +41,8 @@ export const Signup = () => {
 
     try {
       setLoading(true);
-      await axios.post("https://full-stock-app.onrender.com", data);
+
+      await axios.post("https://full-stock-app.onrender.com/api/v1/users/signup", data);
       console.log("Signup successful:", data);
 
       setPhone("");

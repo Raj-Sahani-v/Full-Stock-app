@@ -7,13 +7,17 @@ import {OrderModel} from "./model/OrdersModel.js"
 import {HoldingsModel} from "./model/HoldingsModel.js"
 import { UserModel } from "./model/UserModel.js";
 import { routing } from "./route/userRoute.js";
+import cookieParser from 'cookie-parser'
 
 const app = express();
-app.use(cors())
+app.use(cors({origin:["https://full-stock-app.vercel.app","https://stock-market-woad-one.vercel.app"],
+  credentials:true
+}))
+app.use(cookieParser())
 app.use(express.json())
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URL);
+
 app.use("/api/v1/users", routing);
 const positions = [
   {
@@ -37,33 +41,6 @@ const positions = [
     isLoss: true,
   },
 ];
-
-
-// app.get("/",(req,res)=>{
-//     res.send("Hello Raj Sahani ji")
-// })
-
-
-
-// app.post("/newOrder",async(req,res)=>{
-//   console.log("hello order")
-//   console.log(req.body);
-
-// const newOrder = await OrderModel.create({
-//     name:req.body.name,
-//     qty:req.body.qty,
-//     price:req.body.price,
-//     mode:req.body.mode,
-// });
-// newOrder.save();
-// })
-
-// app.get('/order',async(req,res)=>{
-//   const result = await OrderModel.find({});
-//   res.json(result);
-// })
-
-
 
 const port = process.env.PORT;
 
