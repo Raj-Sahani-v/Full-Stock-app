@@ -6,10 +6,20 @@ import { VerticalChart } from "./VerticalChart";
 export const Holdings = () => {
   const [allHolder, setAllHolder] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:7000/allHoldingData").then((res) => {
-      console.log(res);
-      setAllHolder(res.data);
-    });
+    const fetchHolding = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:7000/api/v1/users/allHoldingData",{
+            withCredentials:true
+          }
+        );
+        console.log(response);
+        setAllHolder(response.data)
+      } catch (error) {
+        return console.log(error);
+      }
+    };
+    fetchHolding();
   }, []);
 
   console.log("HolderData : ", allHolder);

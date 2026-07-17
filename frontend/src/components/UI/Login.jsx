@@ -1,45 +1,52 @@
 import axios from "axios";
-import  { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router";
 
 export const Login = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setloading] = useState(false);
-const[error , setError] = useState("")
+  const [error, setError] = useState("");
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if(userName ==="" &&password ===""){
-        setError("Please fill all the field. ")
+    if (userName === "" && password === "") {
+      setError("Please fill all the field. ");
     }
     const data = {
-        userName,password
-    }
-    console.log(data)
+      userName,
+      password,
+    };
+    console.log(data);
     try {
       setloading(true);
-        await axios.post()
+      const response=await axios.post("http://localhost:7000/api/v1/users/login", data, {
+        withCredentials: true,
+      });
+      window.location.href="http://localhost:5174/"
       setUserName("");
 
       setPassword("");
+
     } catch (err) {
-        console.log(err)
-        setError("something went wrong. Please try again")
-    }
-    finally{
-        setloading(false);
+      console.log(err);
+      setError("something went wrong. Please try again");
+    } finally {
+      setloading(false);
     }
   };
   return (
     <div className="container mt-5 mb-5 d-flex justify-content-center ">
-      <div className="card shadow-lg border-0" style={{maxWidth:"480px",width:"100%"}} >
-        <h3 className="text-center mb-1" >Login Now</h3>
+      <div
+        className="card shadow-lg border-0"
+        style={{ maxWidth: "480px", width: "100%" }}
+      >
+        <h3 className="text-center mb-1">Login Now</h3>
         {error && (
-            <div className="alert alert-danger py-2 text-center" role="alert">
-              {error}
-            </div>
-          )}
+          <div className="alert alert-danger py-2 text-center" role="alert">
+            {error}
+          </div>
+        )}
         <div className="card-body">
           <form onSubmit={handleSubmit}>
             {/* ------------- Username */}
@@ -100,8 +107,11 @@ const[error , setError] = useState("")
                 )}
               </button>
             </div>
-            <p className="text-center mb-0 " >
-                Don't have accoun? <Link to={"/signup"} className="fw-semibold" >Sign up</Link>
+            <p className="text-center mb-0 ">
+              Don't have accoun?{" "}
+              <Link to={"/signup"} className="fw-semibold">
+                Sign up
+              </Link>
             </p>
           </form>
         </div>

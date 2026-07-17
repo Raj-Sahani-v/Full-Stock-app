@@ -1,16 +1,26 @@
-import React , {useState,useEffect} from "react";
-import axios from 'axios';
-import { positions } from "../data";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+//import { positions } from "../data";
 
 const Positions = () => {
+  const [allPosition, setAllPosition] = useState([]);
+  useEffect(() => {
+    const fetchPosition = async () => {
+      try {
+        const positionData = await axios.get(
+          "http://localhost:7000/api/v1/users/allPosition",{
+            withCredentials:true
+          }
+        );
+        console.log("data position : ", positionData);
+        setAllPosition(positionData.data);
+      } catch (error) {
+        return console.log(error);
+      }
 
-    const [allPosition , setAllPosition ] = useState([]);
-    useEffect(()=>{
-      axios.get('http://localhost:7000/allPosition').then((res)=>{
-        console.log(res.data);
-        setAllPosition(res.data);
-      })
-    },[])
+    };
+          fetchPosition();
+  }, []);
 
   return (
     <>

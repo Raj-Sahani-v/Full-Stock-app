@@ -1,7 +1,9 @@
 import { Router } from "express";
-import { allHoldingData, allPosition, signup } from "../controller/controller.js";
+import { allHoldingData, allPosition, login, signup } from "../controller/controller.js";
+import { autherized } from "../Middleware/auth.js";
 
 export const routing = Router();
 routing.route("/signup").post(signup);
-routing.route("/allHoldingData").get(allHoldingData);
-routing.route("/allpostion").get(allPosition);
+routing.route('/login').post(login);
+routing.route("/allHoldingData").get(autherized,allHoldingData);
+routing.route("/allPosition").get(autherized,allPosition);

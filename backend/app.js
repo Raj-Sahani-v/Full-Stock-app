@@ -7,13 +7,17 @@ import {OrderModel} from "./model/OrdersModel.js"
 import {HoldingsModel} from "./model/HoldingsModel.js"
 import { UserModel } from "./model/UserModel.js";
 import { routing } from "./route/userRoute.js";
+import cookieParser from 'cookie-parser'
 
 const app = express();
-app.use(cors())
+app.use(cors({origin:["http://localhost:5173","http://localhost:5174"],
+  credentials:true
+}))
+app.use(cookieParser())
 app.use(express.json())
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URL);
+
 app.use("/api/v1/users", routing);
 const positions = [
   {
