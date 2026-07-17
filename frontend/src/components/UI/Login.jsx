@@ -26,7 +26,7 @@ export const Login = () => {
       const response = await axios.post(`${backendUrl}/api/v1/users/login`, data, {
         withCredentials: true,
       });
-      window.location.href=`${dashboardUrl}`
+      window.location.href=`${dashboardUrl}/`
       setUserName("");
 
       setPassword("");
