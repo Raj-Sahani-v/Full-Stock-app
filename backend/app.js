@@ -10,7 +10,7 @@ import { routing } from "./route/userRoute.js";
 import cookieParser from 'cookie-parser'
 
 const app = express();
-app.use(cors({origin:["http://localhost:5173","http://localhost:5174"],
+app.use(cors({origin:["http://localhost:5173","http://localhost:5174","https://full-stock-app.onrender.com","https://full-stock-app.vercel.app","https://full-stock-app-nv8f.vercel.app"],
   credentials:true
 }))
 app.use(cookieParser())
@@ -41,32 +41,6 @@ const positions = [
     isLoss: true,
   },
 ];
-
-
-// app.get("/",(req,res)=>{
-//     res.send("Hello Raj Sahani ji")
-// })
-
-
-
-// app.post("/newOrder",async(req,res)=>{
-//   console.log("hello order")
-//   console.log(req.body);
-
-// const newOrder = await OrderModel.create({
-//     name:req.body.name,
-//     qty:req.body.qty,
-//     price:req.body.price,
-//     mode:req.body.mode,
-// });
-// newOrder.save();
-// })
-
-// app.get('/order',async(req,res)=>{
-//   const result = await OrderModel.find({});
-//   res.json(result);
-// })
-
 
 
 const port = process.env.PORT;
