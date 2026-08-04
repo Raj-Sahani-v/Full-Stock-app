@@ -44,7 +44,8 @@ export const Signup = () => {
       setLoading(true);
       
       
-      await axios.post(`${backendURL}/api/v1/users/signup`, data);
+      // await axios.post(`${backendURL}/api/v1/users/signup`, data);
+      await axios.post('http://localhost:7000/api/v1/users/signup' ,{data} ,{withCredentials:true})
       console.log("Signup successful:", data);
 
       setPhone("");

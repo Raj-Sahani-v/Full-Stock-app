@@ -8,22 +8,28 @@ import Funds from "../components/Funds";
 import Apps from "../components/Apps";
 import { Holdings } from "./Holdings";
 import { WatchList } from "./WatchList";
-import {GeneralContextProvider} from './GeneralContext'
+//import {GeneralContextProvider} from './GeneralContext'
+import { FullChart } from "./UI/FullChart";
+import { Account } from "./Account";
+import { Protected } from "./Protected";
 
 export const Dashboard = () => {
   return (
     <div className="dashboard-container">
-              <GeneralContextProvider>
+        
         <WatchList />
-      </GeneralContextProvider>
+      
+
       <div className="content">
         <Routes>
           <Route exact path="/" element={<Summary />} />
           <Route path="/orders" element={<Orders />} />
-          <Route path="/holdings" element={<Holdings />} />
+          <Route path="/holdings" element={  <Protected>
+            <Holdings />
+          </Protected> } />
           <Route path="/positions" element={<Positions />} />
-          <Route path="/funds" element={<Funds />} />
-          <Route path="/apps" element={<Apps />} />
+          <Route path="/profile" element={<Account/>} />
+          <Route path="/chart" element={<FullChart/>} />
         </Routes>
       </div>
     </div>

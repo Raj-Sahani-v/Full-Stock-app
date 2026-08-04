@@ -1,36 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import axios from "axios";
 import { VerticalChart } from "./VerticalChart";
+import { DataContextSymbol } from "./ContextVariable";
+import { authApi } from "../api";
 
 export const Holdings = () => {
-  const [allHolder, setAllHolder] = useState([]);
+  const [allHolder, setAllHolder] = useState(null);
+  const { allData, accessToken, setAccessToken } =
+    useContext(DataContextSymbol) || {} ;
   useEffect(() => {
     const fetchHolding = async () => {
+      console.log("holding accesss token", accessToken);
       try {
-        const response = await axios.get(
-          "http://localhost:7000/api/v1/users/allHoldingData",{
-            withCredentials:true
-          }
-        );
+        const response = await authApi.get("/allHoldingData");
         console.log(response);
-        setAllHolder(response.data)
+        setAllHolder(response.data.result);
+        //setHoldingSymbl(response.data)
+        // response.data.map((key)=>{
+        //   setHoldingSymbl(key.name);
+        // })
       } catch (error) {
-        return console.log(error);
+        console.log(error);
       }
     };
     fetchHolding();
-  }, []);
+  }, [accessToken]);
 
   console.log("HolderData : ", allHolder);
 
-  const labels = allHolder.map((subArray) => subArray["name"]);
+  const labels = allHolder?.map((subArray) => subArray["name"]);
   const data = {
     labels,
     datasets: [
       {
         label: "Stock Price",
-        data: allHolder.map((stock) => stock.price),
+        data: allHolder?.map((stock) => stock.price),
         backgroundColor: "orange",
       },
     ],
@@ -38,7 +43,7 @@ export const Holdings = () => {
 
   return (
     <>
-      <h3 className="title">Holdings ({allHolder.length})</h3>
+      <h3 className="title">Holdings ({allHolder?.length})</h3>
       <div className="order-table">
         <table>
           <tr>
@@ -51,25 +56,36 @@ export const Holdings = () => {
             <th>Net chg.</th>
             <th>Day chg.</th>
           </tr>
-          {allHolder.map((stock, index) => {
-            const curValue = stock.price * stock.qty;
+          {allHolder?.map((stock, index) => {
+            const curValue =
+              allData?.[stock.name]?.regularMarketPrice * stock.qty;
             const isProfit = curValue - stock.avg * stock.qty >= 0.0;
             const profClass = isProfit ? "profit" : "loss";
             const dayChange = stock.isLoss ? "loss" : "profit";
+            const netChanges =
+              ((allData?.[stock.name]?.regularMarketPrice - stock.avg) /
+                stock.avg) *
+              100;
+            const dayChanges =
+              ((allData?.[stock.name]?.regularMarketPrice -
+                allData?.[stock.name]?.regularMarketPreviousClose) /
+                allData?.[stock.name]?.regularMarketPreviousClose) *
+              100;
 
             return (
               <tr key={index}>
                 <td>{stock.name}</td>
                 <td>{stock.qty}</td>
                 <td>{stock.avg.toFixed(2)}</td>
-                <td>{stock.price.toFixed(2)}</td>
+                <td>{allData?.[stock.name]?.regularMarketPrice.toFixed(2)}</td>
                 <td>{curValue.toFixed(2)}</td>
                 <td className={profClass}>
                   {" "}
-                  {(curValue - stock.avg * stock.qty).toFixed(2)}{" "}
+                  {(curValue - stock.avg * stock.qty).toFixed(2)}
+                  {"%"}
                 </td>
-                <td className={profClass}>{stock.net}</td>
-                <td className={dayChange}>{stock.day}</td>
+                <td className={profClass}>{netChanges?.toFixed(2)}%</td>
+                <td className={dayChange}>{dayChanges?.toFixed(2)}%</td>
               </tr>
             );
           })}

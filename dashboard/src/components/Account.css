@@ -1,0 +1,121 @@
+.account-page {
+  background: #f5f7fb;
+  min-height: 100vh;
+  padding: 30px 0;
+}
+
+.account-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+.account-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+.logout-btn {
+  color: #d32f2f;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  color: #b71c1c;
+}
+
+.profile-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  background: #1976d2;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.profile-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.view-profile {
+  color: #1976d2;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.report-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.report-item {
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.report-item:hover {
+  background: #f0f6ff;
+  color: #1976d2;
+}
+
+.feature-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  height: 100%;
+  text-align: center;
+  transition: 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  width: 55px;
+  height: 55px;
+  margin: auto;
+  border-radius: 50%;
+  background: #1976d2;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-title {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.feature-desc {
+  color: #666;
+  font-size: 14px;
+}

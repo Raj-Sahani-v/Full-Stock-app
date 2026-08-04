@@ -12,8 +12,8 @@ export function Home(){
         <Lifecycle/>
         <KitConnect/>
         <Pricing/>
-        <Education/>
-        <OpenAccount/>
+        <Education/> 
+         <OpenAccount/>
         
         
     </>)

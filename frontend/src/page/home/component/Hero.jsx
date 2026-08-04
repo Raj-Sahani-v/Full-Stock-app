@@ -5,7 +5,7 @@ export const Hero = () => {
   return (
     <div className="container-lg container-fluid mt-5 ">
       <div className="row">
-       <div className="ms-5 text-center" style={{width:"90%"}} >
+       <div className="ms-5 text-center" style={{width:"80%"}} >
          <ZeroRisk/>
        </div>
         {/* <div className="text-start mb-5 mt-5 ms-5 p-3" style={{width:"100vw"}} >

@@ -20,14 +20,22 @@ export const Login = () => {
     console.log(data);
     try {
       setloading(true);
-      const response=await axios.post("http://localhost:7000/api/v1/users/login", data, {
-        withCredentials: true,
-      });
-      window.location.href="http://localhost:5174/"
-      setUserName("");
+      const response = await axios.post(
+        "http://localhost:7000/api/v1/users/login",
+        data,
+        {
+          withCredentials: true,
+        },
+      );
 
-      setPassword("");
+      if (response.data.accessToken) {
+        window.location.href = "http://localhost:5174/";
+        setUserName("");
 
+        setPassword("");
+      } else {
+        setError("uername or password is wrong");
+      }
     } catch (err) {
       console.log(err);
       setError("something went wrong. Please try again");

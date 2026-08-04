@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 import { Link } from "react-router";
+import { LiveSerch } from "./UI/LiveSerch";
+import Profile from "./UI/Profile";
 
 const Menu = () => {
   const [selectMenu ,setSelectMenu] = useState(0);
@@ -18,6 +20,7 @@ const Menu = () => {
   return(
     <div className="menu-container">
       <img src="logo.png" alt="logo" style={{width:"50px"}} />
+      <div className="" ><LiveSerch/></div>
       <div className="menus">
         <ul>
           <li>
@@ -40,20 +43,9 @@ const Menu = () => {
             <p className={selectMenu===3?activeClass:menuClass} >Postions</p>
             </Link>
           </li>
-          <li>
-             <Link className="text-decoration-none" to={"/funds"} onClick={()=>handleMenuClick(4)} >
-            <p className={selectMenu === 4?activeClass:menuClass} >Funds</p>
-            </Link>
-          </li>
-          <li>
-             <Link className="text-decoration-none" to={"/apps"} onClick={()=>handleMenuClick(5)} >
-            <p className={selectMenu===5?activeClass:menuClass} >Apps</p>
-            </Link>
-          </li>
         </ul>
         <div className="profile">
-          <div className="avatar">ZU</div>
-          <p className="username">USERID</p>
+         <Profile/>
         </div>
       </div>
     </div>

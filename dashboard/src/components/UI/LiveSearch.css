@@ -1,0 +1,145 @@
+.stock-search {
+  width: 100%;
+  max-width: 640px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #12151a;
+  border: 1px solid #262b33;
+  border-radius: 8px;
+  padding: 10px 14px;
+  transition: border-color 0.15s ease;
+}
+
+.search-bar:focus-within {
+  border-color: #3b82f6;
+  color: rgb(2, 134, 2)
+}
+
+.search-icon {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #e5e7eb;
+  font-size: 14px;
+}
+
+.search-input::placeholder {
+  color: #6b7280;
+}
+
+.search-results {
+  margin-top: 6px;
+  background: #12151a;
+  border: 1px solid #262b33;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.empty-state {
+  padding: 20px 14px;
+  color: #6b7280;
+  font-size: 13px;
+  text-align: center;
+  margin: 0;
+}
+
+.stock-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #1c2028;
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+
+.stock-row:last-child {
+  border-bottom: none;
+}
+
+.stock-row:hover {
+  background: #191d24;
+}
+
+.stock-badge {
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 600;
+  color: #93c5fd;
+  background: rgba(59, 130, 246, 0.12);
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.3px;
+}
+
+.stock-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stock-symbol {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e5e7eb;
+}
+
+.stock-name {
+  font-size: 12px;
+  color: #6b7280;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stock-exchange {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: #6b7280;
+  background: #1c2028;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.stock-price {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+.price-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e5e7eb;
+}
+
+.price-change {
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.price-change.up {
+  color: #4ade80;
+}
+
+.price-change.down {
+  color: #f87171;
+}
